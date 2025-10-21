@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        display: flex;
+        font-family: Arial, sans-serif;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      .container {
+        width: 400px;
+        border-radius: 20px;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      h1 {
+        margin-top: 60px;
+      }
+      input {
+        width: 80%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+
+      button {
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #5549d6;
+      }
+      .result {
+        margin-bottom: 30px;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Age Calculator</h1>
+      <input type="date" id="dob" />
+      <button type="button" onclick="agecalcualte()">Calculate Age</button>
+      <div class="result"></div>
+    </div>
+    <script>
+      function agecalcualte() {
+        let dob = document.getElementById("dob").value;
+        if (dob == "") {
+          document.querySelector(".result").innerHTML =
+            "Please select your date of birth!";
+          return;
+        }
+
+        let birthdate = new Date(dob);
+        let today = new Date();
+
+        let age = today.getFullYear() - birthdate.getFullYear();
+        let month = today.getMonth() - birthdate.getMonth();
+        let day = today.getDate() - birthdate.getDate();
+
+        if (age < 0) {
+          document.querySelector(".result").innerHTML =
+            "Please select a valid age";
+          return;
+        }
+        if (month < 0 || (month === 0 && day < 0)) {
+          age--;
+          month += 12;
+        }
+        if (day < 0) {
+          let premonth = new Date(today.getFullYear(), today.getMonth(), 0);
+          day = premonth.getDate() + day;
+          month--;
+        }
+        document.querySelector(
+          ".result"
+        ).innerHTML = `You are <span style="color:#6C63FF">${age}</span> years, 
+        <span style="color:#6C63FF">${month}</span> months and 
+        <span style="color:#6C63FF">${day}</span> days old.`;
+      }
+    </script>
+  </body>
+</html>
