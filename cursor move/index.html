@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: black;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vh;
+        }
+
+        .box {
+            height: 50px;
+            width: 50px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        let box = document.querySelector(".box");
+        let body = document.body;
+
+        window.addEventListener("mousemove", function (e) {
+            box.style.transform = `translate(${e.clientX - 25}px , ${e.clientY - 25}px)`
+        })
+    </script>
+</body>
+
+</html>
