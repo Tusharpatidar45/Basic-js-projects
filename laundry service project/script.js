@@ -1,5 +1,3 @@
-let cartitem = [];
-
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 let total = 0;
 
@@ -55,5 +53,6 @@ function rendercart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 rendercart();
+
 
 
