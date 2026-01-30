@@ -1,7 +1,7 @@
 let cartitem = [];
-let total = 0;
 
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+let total = 0;
 
 function addItem(name, price) {
   let exists = cart.find((item) => item.name === name);
@@ -55,4 +55,5 @@ function rendercart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 rendercart();
+
 
